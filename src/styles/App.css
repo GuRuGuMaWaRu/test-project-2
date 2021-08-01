@@ -1,4 +1,6 @@
 .App {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
   min-height: 100vh;
   color: white;
   background-color: #5f6061;
