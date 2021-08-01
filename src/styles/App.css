@@ -1,7 +1,34 @@
-.App {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
+#app {
   min-height: 100vh;
   color: white;
   background-color: #5f6061;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+  background-color: #252525;
+}
+
+.header > div {
+  padding: 1em;
+  cursor: pointer;
+}
+
+.header > div:hover {
+  padding: 1em;
+  background-color: #3a3737;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  color: white;
+  text-decoration: none;
+  padding: 0.2em 0;
+}
+
+.row:hover {
+  background-color: #797979;
 }

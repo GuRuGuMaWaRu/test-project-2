@@ -18,15 +18,17 @@ const App = () => {
 
   return (
     <div className="App">
-      <div>Time Added</div>
-      <div>Title</div>
-      <div>Domain</div>
+      <div className="header">
+        <div>Time Added</div>
+        <div>Title</div>
+        <div>Domain</div>
+      </div>
       {data.map(item => (
-        <React.Fragment key={item.id}>
+        <a className="row" key={item.id} href={item.url} target="_blank">
           <div>{item.time}</div>
           <div>{item.title}</div>
           <div>{item.domain}</div>
-        </React.Fragment>
+        </a>
       ))}
     </div>
   );
