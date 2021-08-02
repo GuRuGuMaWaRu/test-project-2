@@ -15,18 +15,52 @@
   background-color: #3a3737;
 }
 
+.header .header-title-mobile {
+  display: none;
+  cursor: default;
+}
+
+.header .header-title-mobile:hover {
+  background-color: #252525;
+}
+
 .row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   color: white;
   text-decoration: none;
-  padding: 0.2em 0;
+  padding: 0.3em 0;
+  border-bottom: 1px solid rgb(63, 63, 63);
 }
 
 .row:hover {
-  background-color: #797979;
+  background-color: #979797;
+}
+
+.row > div {
+  padding: 0.2em;
 }
 
 .load-indicator {
   text-align: center;
+}
+
+@media screen and (max-width: 680px) {
+  .header {
+    grid-template-columns: 1fr;
+  }
+  .row {
+    grid-template-columns: 1fr;
+  }
+  .header-time,
+  .header-title,
+  .header-domain,
+  .row-time,
+  .row-domain {
+    display: none;
+  }
+
+  .header .header-title-mobile {
+    display: block;
+  }
 }
