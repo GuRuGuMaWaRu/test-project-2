@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import { useData } from "../contexts/data";
+import useIntersectionObserver from "../hooks/useIntersectionObserver";
 import "../styles/List.css";
 
 const List = () => {
   const { data, status, sortData } = useData();
+
+  const [targetRef] = useIntersectionObserver({
+    activationFn: () => {
+      console.log("ban");
+    },
+  });
 
   if (status === "loading") {
     return <div>Loading...</div>;
@@ -24,6 +31,7 @@ const List = () => {
           <div>{item.domain}</div>
         </a>
       ))}
+      <div className="load-indicator" ref={targetRef}>More is coming...</div>
     </div>
   );
 };

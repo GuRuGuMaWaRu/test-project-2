@@ -26,3 +26,7 @@
 .row:hover {
   background-color: #797979;
 }
+
+.load-indicator {
+  text-align: center;
+}
