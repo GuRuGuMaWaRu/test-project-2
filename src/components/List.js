@@ -5,11 +5,11 @@ import useIntersectionObserver from "../hooks/useIntersectionObserver";
 import "../styles/List.css";
 
 const List = () => {
-  const { data, status, sortData } = useData();
+  const { data, status, sortData, loadMoreData } = useData();
 
   const [targetRef] = useIntersectionObserver({
     activationFn: () => {
-      console.log("ban");
+      loadMoreData();
     },
   });
 
@@ -31,7 +31,10 @@ const List = () => {
           <div>{item.domain}</div>
         </a>
       ))}
-      <div className="load-indicator" ref={targetRef}>More is coming...</div>
+      {
+        (status !== "loading" && status !== "all loaded") &&
+        <div className="load-indicator" ref={targetRef}>More is coming...</div>
+      }
     </div>
   );
 };
