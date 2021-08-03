@@ -63,6 +63,7 @@ const DataProvider = ({ children }) => {
       value={{
         data: data.data,
         status: data.status,
+        source: data.source,
         sortData,
         loadMoreData,
         changeSource,

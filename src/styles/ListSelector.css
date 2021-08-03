@@ -5,13 +5,19 @@
   cursor: pointer;
 }
 
-.list-selector-btn {
+.list-selector-btn,
+.list-selector-btn--selected {
   flex-grow: 1;
   text-align: center;
   padding: 0.5em;
 }
 
-.list-selector-btn:hover {
+.list-selector-btn--selected {
+  color: rgb(230, 211, 109);
+}
+
+.list-selector-btn:hover,
+.list-selector-btn--selected:hover {
   color: rgb(230, 211, 109);
   background-color: rgb(20, 20, 20);
 }
