@@ -1,0 +1,17 @@
+.list-selector {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(48, 48, 48);
+  cursor: pointer;
+}
+
+.list-selector-btn {
+  flex-grow: 1;
+  text-align: center;
+  padding: 0.5em;
+}
+
+.list-selector-btn:hover {
+  color: rgb(230, 211, 109);
+  background-color: rgb(20, 20, 20);
+}

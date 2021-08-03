@@ -26,10 +26,10 @@ time added, title and domain
 - upon reaching end of page load new entries using pagination api (inifinity scroll)
 - entry should be clickable and should lead to HackerNews comments(link)
 - implement mobile version which consists of entry title column only (fills screen completely) and has floating sort by date button
+- make table adaptive: breakline entries, truncate by ellipsis any overflow that doesn't fit into 3 lines
+- implement the same functionality for other list (news if you implemented newest, newest otherwise,etc.), add ability to transition between lists
 
 * you can use 1 helper library besides react
-* make table adaptive: breakline entries, truncate by ellipsis any overflow that doesn't fit into 3 lines
-* implement the same functionality for other list (news if you implemented newest, newest otherwise,etc.), add ability to transition between lists
 * small instruction in README, for start the application at local machine
 * deploy app(Netlify, Vercel, GH Pages etc.)
 * no useless comments in code

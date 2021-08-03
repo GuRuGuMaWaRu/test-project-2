@@ -1,8 +1,12 @@
+.load-screen {
+  min-height: 100vh;
+}
+
 .header {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   text-align: center;
-  background-color: #252525;
+  background-color: #424242;
 }
 
 .header > div {
@@ -42,6 +46,7 @@
 }
 
 .load-indicator {
+  color: rgb(185, 81, 81);
   text-align: center;
 }
 

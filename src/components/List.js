@@ -14,7 +14,7 @@ const List = () => {
   });
 
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return <div className="load-screen">Loading...</div>;
   }
 
   return (

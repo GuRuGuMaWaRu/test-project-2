@@ -1,58 +1,37 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 
 const DataContext = React.createContext(null);
 
 const useData = () => React.useContext(DataContext);
 
 const DataProvider = ({ children }) => {
-  const [page, setPage] = useState(1);
-  const [data, setData] = useState(null);
-  const [dataStatus, setDataStatus] = useState("loading");
-
-  // const loadData = () => {
-  //   console.log('loading data...');
-  //   console.log('page:', page);
-  //   fetch(`https://api.hnpwa.com/v0/news/${page}.json`)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       // const normalizedData = data.map(data => {
-  //       //   const dateObj = new Date(data.time);
-  //       //   return { ...data, time: dateObj.toDateString() };
-  //       // });
-
-  //       setData(data);
-  //     });
-  // };
+  const [data, setData] = useState({
+    data: null,
+    page: 1,
+    status: "loading",
+    source: "https://api.hnpwa.com/v0/news/",
+  });
 
   useEffect(() => {
-    fetch(`https://api.hnpwa.com/v0/news/${page}.json`)
+    fetch(`${data.source}${data.page}.json`)
       .then(res => res.json())
       .then(data => {
-        // const normalizedData = data.map(data => {
-        //   const dateObj = new Date(data.time);
-        //   return { ...data, time: dateObj.toDateString() };
-        // });
-
-        setData(prevData => {
-          if (!prevData) {
-            if (dataStatus === "loading") {
-              setDataStatus("ready");
-            }
-              
-            return data;
+        setData(prevState => {
+          if (!prevState.data) {
+            return { ...prevState, data, status: "ready" };
           } else {
             if (data.length < 1) {
-              setDataStatus("all loaded")
+              return { ...prevState, status: "all loaded" };
             }
 
-            return [...prevData, ...data];
+            return { ...prevState, data: [...prevState.data, ...data] };
           }
         });
       });
-  }, [page]);
+  }, [data.page, data.source]);
 
   const sortData = type => {
-    const sortedData = [...data].sort((a, b) => {
+    const sortedData = [...data.data].sort((a, b) => {
       if (a[type] < b[type]) {
         return -1;
       }
@@ -63,17 +42,26 @@ const DataProvider = ({ children }) => {
       return 0;
     });
 
-    setData(sortedData);
+    setData(prevState => ({ ...prevState, data: sortedData }));
   };
 
   const loadMoreData = () => {
-    setPage(prevState => prevState + 1);
-    // loadData();
+    setData(prevState => ({ ...prevState, page: prevState.page + 1 }));
+  };
+
+  const changeSource = source => {
+    setData({ data: null, status: "loading", source, page: 1 });
   };
 
   return (
     <DataContext.Provider
-      value={{ data, status: dataStatus, sortData, loadMoreData }}
+      value={{
+        data: data.data,
+        status: data.status,
+        sortData,
+        loadMoreData,
+        changeSource,
+      }}
     >
       {children}
     </DataContext.Provider>
