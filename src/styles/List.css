@@ -1,5 +1,9 @@
 .load-screen {
+  font-size: 1.5em;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header {
