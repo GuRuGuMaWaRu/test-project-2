@@ -4,13 +4,17 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "main.js",
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "build"),
+    publicPath: "/",
+  },
+  devServer: {
+    contentBase: "./build",
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.js|jsx$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -18,6 +22,10 @@ module.exports = {
             presets: ["@babel/preset-env", "@babel/preset-react"],
           },
         },
+      },
+      {
+        test: /\.html$/,
+        use: "html-loader",
       },
       {
         test: /\.css$/,

@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://GuRuGuMaWaRu.github.io/test-project-2",
   "scripts": {
-    "build": "webpack serve --mode production",
+    "build": "webpack --mode production",
     "dev": "webpack serve --mode development --open --hot"
   },
   "keywords": [],
@@ -20,6 +21,7 @@
     "@babel/preset-react": "^7.14.5",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
+    "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.2",
     "style-loader": "^3.2.1",
     "webpack": "^5.47.1",
