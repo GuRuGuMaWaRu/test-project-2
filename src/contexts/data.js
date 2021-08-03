@@ -17,14 +17,24 @@ const DataProvider = ({ children }) => {
       .then(res => res.json())
       .then(data => {
         setData(prevState => {
+          const normalizedData = data?.map(item => {
+            const time = new Date(Number(`${item.time}000`));
+            const timeToStr = time.toLocaleDateString();
+
+            return { ...item, time: timeToStr };
+          });
+
           if (!prevState.data) {
-            return { ...prevState, data, status: "ready" };
+            return { ...prevState, data: normalizedData, status: "ready" };
           } else {
             if (data.length < 1) {
               return { ...prevState, status: "all loaded" };
             }
 
-            return { ...prevState, data: [...prevState.data, ...data] };
+            return {
+              ...prevState,
+              data: [...prevState.data, ...normalizedData],
+            };
           }
         });
       });
