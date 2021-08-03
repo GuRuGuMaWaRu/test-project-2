@@ -50,7 +50,12 @@ const DataProvider = ({ children }) => {
   };
 
   const changeSource = source => {
-    setData({ data: null, status: "loading", source, page: 1 });
+    setData(prevState => {
+      if (prevState.source === source) {
+        return prevState;
+      }
+      return { data: null, status: "loading", source, page: 1 };
+    });
   };
 
   return (
